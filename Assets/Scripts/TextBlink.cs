@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TextBlink : MonoBehaviour
 {
@@ -23,6 +24,13 @@ public class TextBlink : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             flashingText.text = "press space to start";
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("GameScene");
         }
     }
 }
