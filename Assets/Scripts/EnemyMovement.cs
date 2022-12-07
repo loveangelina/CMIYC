@@ -20,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // º®¿¡ ´êÀ¸¸é ¹æÇâ ¹Ù²Ù±â
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ù±ï¿½
         if(collision.tag == "Ground")
         {
             moveSpeed = -moveSpeed;
