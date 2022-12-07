@@ -49,11 +49,11 @@ TagManager:
   - name: Water
     uniqueID: 273258591
     locked: 0
-  - name: Climbing
-    uniqueID: 4151127349
-    locked: 0
   - name: Platforms
     uniqueID: 1220835833
+    locked: 0
+  - name: Climbing
+    uniqueID: 4151127349
     locked: 0
   - name: Hazards
     uniqueID: 1521542169
