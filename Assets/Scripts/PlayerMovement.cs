@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector2(Mathf.Sign(rigidbody.velocity.x), 1f);
         }
     }
-
+   
     void ClimbLadder()
     {
         if (!feetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))

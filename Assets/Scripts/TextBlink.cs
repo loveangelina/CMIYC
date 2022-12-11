@@ -30,7 +30,7 @@ public class TextBlink : MonoBehaviour
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene("Stage01");
         }
     }
 }

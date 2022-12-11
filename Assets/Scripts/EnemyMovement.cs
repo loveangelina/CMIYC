@@ -6,10 +6,12 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
     Rigidbody2D rigidbody;
+    CapsuleCollider2D enemyCollider;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        enemyCollider = GetComponent<CapsuleCollider2D>();
     }
 
 
@@ -27,8 +29,6 @@ public class EnemyMovement : MonoBehaviour
 
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
-        
-        
 
     }
 }
