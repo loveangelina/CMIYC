@@ -20,6 +20,8 @@ public class GameSession : MonoBehaviour
 
     void Awake()
     {
+        
+
         int numberGameSessions = FindObjectsOfType<GameSession>().Length;
         if(numberGameSessions > 1)
         {
@@ -39,9 +41,14 @@ public class GameSession : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(timelimit);
         timelimit -= Time.deltaTime;
+        if(timelimit <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+            Destroy(gameObject);
+        }
         timeText.text = Mathf.Round(timelimit).ToString();
+        
     }
 
 
