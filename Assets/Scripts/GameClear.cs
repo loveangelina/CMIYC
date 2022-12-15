@@ -9,17 +9,8 @@ public class GameClear : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            StartCoroutine(GameOver());
+            FindObjectOfType<GameSession>().ProcessPlayerClear();
         }
         
-    }
-    
-    IEnumerator GameOver()
-    {
-        yield return new WaitForSecondsRealtime(2f);
-
-        Debug.Log("Game Clear");
-        SceneManager.LoadScene("Exit");
-        Destroy(gameObject); 
     }
 }

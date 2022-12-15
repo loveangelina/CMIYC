@@ -9,7 +9,7 @@ public class GameSession : MonoBehaviour
 {
     //[SerializeField] int playerLives = 1;
     [SerializeField] float timelimit = 99;
-    [SerializeField] float sceneLoadDelay = 2f;
+    [SerializeField] float sceneLoadDelay = 1f;
 
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -20,8 +20,6 @@ public class GameSession : MonoBehaviour
 
     void Awake()
     {
-        
-
         int numberGameSessions = FindObjectsOfType<GameSession>().Length;
         if(numberGameSessions > 1)
         {
@@ -68,6 +66,11 @@ public class GameSession : MonoBehaviour
         */
     }
 
+    public void ProcessPlayerClear()
+    {
+        StartCoroutine(GameClear());
+    }
+
     public void IncreaseScore(int points)
     {
         score += points;
@@ -79,8 +82,18 @@ public class GameSession : MonoBehaviour
         yield return new WaitForSecondsRealtime(sceneLoadDelay);
 
         Debug.Log("Game Over");
+            
         SceneManager.LoadScene("GameOver");
-        Destroy(gameObject); // ���� �ٽý��� ���� �� �������̶� ���� �����ϱ� ����
+        Destroy(gameObject); 
+    }
+
+    IEnumerator GameClear()
+    {
+        yield return new WaitForSecondsRealtime(sceneLoadDelay);
+
+        Debug.Log("Game Clear");
+        SceneManager.LoadScene("Exit");
+        Destroy(gameObject); 
     }
 
     /*
@@ -97,4 +110,9 @@ public class GameSession : MonoBehaviour
         FindObjectOfType<ScenePersist>().ResetScenePersist();
     }
     */
+
+    public int GetScore()
+    {
+        return score;
+    }
 }

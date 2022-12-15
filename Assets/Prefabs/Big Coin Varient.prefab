@@ -60,6 +60,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4414361816139885223, guid: a1974d88fde62ad4e986b621dd7086d4, type: 3}
+      propertyPath: coinPickupSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 88d374dfcb6e97c40af3b5828f2479ad, type: 3}
+    - target: {fileID: 4414361816139885223, guid: a1974d88fde62ad4e986b621dd7086d4, type: 3}
       propertyPath: pointsForCoinPickup
       value: 300
       objectReference: {fileID: 0}
