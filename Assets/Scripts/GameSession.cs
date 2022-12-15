@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] int playerLives = 3;
+    //[SerializeField] int playerLives = 1;
+    [SerializeField] float timelimit = 99;
     [SerializeField] float sceneLoadDelay = 2f;
 
-    [SerializeField] TextMeshProUGUI livesText;
+    [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] TextMeshProUGUI scoreText;
     int score = 0;
     CoinPickup coinPickup;
@@ -32,13 +33,23 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
-        livesText.text = playerLives.ToString();
+        timeText.text = timelimit.ToString();
         scoreText.text = score.ToString();
+    }
+
+    void Update()
+    {
+        Debug.Log(timelimit);
+        timelimit -= Time.deltaTime;
+        timeText.text = Mathf.Round(timelimit).ToString();
     }
 
 
     public void ProcessPlayerDeath()
     {
+        StartCoroutine(GameOver());
+        
+        /*
         if(playerLives > 1)
         {
             StartCoroutine(ResetGameSession());
@@ -47,6 +58,7 @@ public class GameSession : MonoBehaviour
         {
             GameOver();
         }
+        */
     }
 
     public void IncreaseScore(int points)
@@ -55,13 +67,16 @@ public class GameSession : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    void GameOver()
+    IEnumerator GameOver()
     {
+        yield return new WaitForSecondsRealtime(sceneLoadDelay);
+
         Debug.Log("Game Over");
         SceneManager.LoadScene("GameOver");
-        Destroy(gameObject); // °ÔÀÓ ´Ù½Ã½ÃÀÛ ÇßÀ» ¶§ »ý¸í·ÂÀÌ¶û Á¡¼ö ¸®¼ÂÇÏ±â À§ÇÔ
+        Destroy(gameObject); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
+    /*
     IEnumerator ResetGameSession()
     {
         yield return new WaitForSecondsRealtime(sceneLoadDelay);
@@ -74,4 +89,5 @@ public class GameSession : MonoBehaviour
 
         FindObjectOfType<ScenePersist>().ResetScenePersist();
     }
+    */
 }
