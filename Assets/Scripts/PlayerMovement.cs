@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
-    [SerializeField] GameObject bullet;
-    [SerializeField] Transform gun;
+    //[SerializeField] GameObject bullet;
+    //[SerializeField] Transform gun;
 
     Vector2 moveInput;
     Rigidbody2D rigidbody;
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     void OnJump(InputValue value)
     {
         if (!isAlive) { return; }
-        if (!feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) // Á¡ÇÁ 2¹ø ¸øÇÏ°Ô ¸·À½
+        if (!feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) // ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             return;
         }
@@ -63,11 +63,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /*
     void OnFire(InputValue value)
     {
         if (!isAlive) { return; }
         Instantiate(bullet, gun.position, transform.rotation);
     }
+    */
 
     void Run()
     {
@@ -92,14 +94,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!feetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
-            rigidbody.gravityScale = gravityScaleAtStart; // »ç´Ù¸®¸¦ ¾È¹â°í ÀÖÀ¸¸é gravity¸¦ ¿ø·¡´ë·Î
+            rigidbody.gravityScale = gravityScaleAtStart; // ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½È¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ gravityï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             animator.SetBool("IsClimbing", false);
             return;
         }
 
         Vector2 climbVelocity = new Vector2(rigidbody.velocity.x, moveInput.y * climbSpeed);
         rigidbody.velocity = climbVelocity;
-        rigidbody.gravityScale = 0; // »ç´Ù¸®¿¡¼­ Á¡Á¡ ³»·Á¿À´Â Çö»ó ¸·À½
+        rigidbody.gravityScale = 0; // ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         bool playerhasVerticalSpeed = Mathf.Abs(rigidbody.velocity.y) > Mathf.Epsilon;
         animator.SetBool("IsClimbing", playerhasVerticalSpeed);
